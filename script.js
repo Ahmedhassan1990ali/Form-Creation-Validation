@@ -10,22 +10,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById("password").value.trim();
 
         let isValid = true;
-        let messages = "";
+        let messages = [];
 
         if (username.length < 3){
             isValid = false;
-            messages +="invalid username"
+            messages.push("invalid username");
         };
 
         if (!email.includes("@") || !email.includes(".")){
             isValid = false;
-            messages +="invalid email"
+            messages.push("invalid email");
         }
 
         if (password.length < 3){
             isValid = false;
-            messages +="invalid password"
+            messages.push("invalid password");
         };
+
+        feedbackDiv.style.display = "block"
+        if (isValid){
+            feedbackDiv.textContent = "Registration successful!";
+            feedbackDiv.style.color = "#28a745";
+        } else {
+            feedbackDiv.innerHTML = messages.join("<br");
+            feedbackDiv.style.color = "#dc3545";
+        }
 
     })
 
