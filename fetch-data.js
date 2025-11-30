@@ -6,6 +6,13 @@ async function fetchUserData() {
         const response = await fetch(apiUrl);
         const users = await response.json();
         dataContainer.innerHTML = '';
+        const userList = document.createElement('ul');
+        users.forEach(user => {
+            const userli = document.createElement('li');
+            userli.textContent = user;
+            userList.appendChild(userli);
+        });
+        dataContainer.appendChild(userList);
     } catch {
 
     }
